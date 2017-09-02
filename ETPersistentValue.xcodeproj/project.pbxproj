@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		716BF70B1F5B161B00130268 /* PersistentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716BF70A1F5B161B00130268 /* PersistentDate.swift */; };
 		71DC08981F2F12F700A1387B /* PersistentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC08971F2F12F700A1387B /* PersistentValue.swift */; };
 		71DC089B1F2F133600A1387B /* PersistentBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC089A1F2F133600A1387B /* PersistentBool.swift */; };
 		71DC089D1F2F140E00A1387B /* PersistentDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC089C1F2F140E00A1387B /* PersistentDouble.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		716BF70A1F5B161B00130268 /* PersistentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDate.swift; sourceTree = "<group>"; };
 		71DC08891F2F128400A1387B /* ETPersistentValue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETPersistentValue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		71DC08931F2F12C900A1387B /* ETPersistentValue iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ETPersistentValue iOS.h"; sourceTree = "<group>"; };
 		71DC08941F2F12C900A1387B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				71DC08A21F2F15F200A1387B /* PersistentSet.swift */,
 				71DC08A01F2F159500A1387B /* PersistentString.swift */,
 				71F12AB01F2F1F06005FB396 /* PersistentURL.swift */,
+				716BF70A1F5B161B00130268 /* PersistentDate.swift */,
 			);
 			path = GeneralTypes;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				71F12AB11F2F1F06005FB396 /* PersistentURL.swift in Sources */,
 				71DC089B1F2F133600A1387B /* PersistentBool.swift in Sources */,
 				71DC089F1F2F142F00A1387B /* PersistentInt.swift in Sources */,
+				716BF70B1F5B161B00130268 /* PersistentDate.swift in Sources */,
 				71DC08A11F2F159500A1387B /* PersistentString.swift in Sources */,
 				71DC08981F2F12F700A1387B /* PersistentValue.swift in Sources */,
 				71DC08A31F2F15F200A1387B /* PersistentSet.swift in Sources */,
