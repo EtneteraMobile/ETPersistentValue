@@ -15,7 +15,7 @@ open class PersistentSet<Element: Hashable>: PersistentValue<Set<Element>> {
     /// - Parameter input: Value for saving.
     /// - Returns: A processed `Set` for saving into `UserDefaults`.
     /// - Precondition: `Element` can't be `Codable`
-    internal override func toUserDefaults(_ input: Set<Element>) -> Any {
+    override open func toUserDefaults(_ input: Set<Element>) -> Any {
         if Element.self is Codable {
             preconditionFailure("Codable elements are not supported")
         } else {
@@ -27,7 +27,7 @@ open class PersistentSet<Element: Hashable>: PersistentValue<Set<Element>> {
     /// Converts `Array` into `Set` and returns it.
     /// - Parameter input: Loaded value from `UserDefaults`.
     /// - Returns: A processed `Set` from `Array`.
-    internal override func fromUserDefaults(_ input: Any?) -> Set<Element>? {
+    override open func fromUserDefaults(_ input: Any?) -> Set<Element>? {
         if let array = input as? [Element] {
             return Set(array)
         } else {
