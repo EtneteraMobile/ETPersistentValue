@@ -17,11 +17,11 @@ open class PersistentValue<ValueType> {
     // MARK: public
 
     open var value: ValueType?
+    public let key: String
 
     // MARK: private
 
     private let userDefaults: UserDefaults
-    private let key: String
 
     // MARK: - Initialization
     
