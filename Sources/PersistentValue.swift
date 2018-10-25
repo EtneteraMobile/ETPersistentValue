@@ -20,8 +20,8 @@ open class PersistentValue<ValueType> {
 
     // MARK: private
 
-    fileprivate let userDefaults: UserDefaults
-    fileprivate let key: String
+    private let userDefaults: UserDefaults
+    private let key: String
 
     // MARK: - Initialization
     
@@ -78,13 +78,13 @@ open class PersistentValue<ValueType> {
 
     /// - Parameter input: Value for saving.
     /// - Returns: A processed value for saving into `UserDefaults`.
-    internal func toUserDefaults(_ input: ValueType) -> Any {
+    open func toUserDefaults(_ input: ValueType) -> Any {
         return input
     }
 
     /// - Parameter input: Value to be loaded.
     /// - Returns: A loaded value from `UserDefaults`.
-    internal func fromUserDefaults(_ input: Any?) -> ValueType? {
+    open func fromUserDefaults(_ input: Any?) -> ValueType? {
         return input as? ValueType
     }
 
@@ -95,7 +95,7 @@ open class PersistentValue<ValueType> {
     /// - Parameters:
     ///   - key: Identificator of the value saved in `UserDefaults`.
     ///   - userDefaults: Instance of `UserDefaults`.
-    fileprivate func load(_ userDefaults: UserDefaults, _ key: String) -> ValueType? {
+    private func load(_ userDefaults: UserDefaults, _ key: String) -> ValueType? {
         return fromUserDefaults(userDefaults.object(forKey: key) as AnyObject)
     }
 }
