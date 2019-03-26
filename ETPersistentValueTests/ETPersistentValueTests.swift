@@ -69,6 +69,48 @@ class ETPersistentValueTests: XCTestCase {
             XCTAssert(value.value == savedValue)
         }
     }
+
+    func test_SaveNilValueWithUpdating() {
+        let key = Keys.intValue
+
+        given("remove object with the key to be saved") {
+            userDefaults.removeObject(forKey: key.description)
+        }
+
+        // when
+        let value = PersistentValue<Int>(key: key, userDefaults: userDefaults)
+        value.save {
+            $0 ?? -1
+        }
+
+        // then
+        then("there is saved int in user defaults") {
+            let savedValue = userDefaults.integer(forKey: key.description)
+            XCTAssert(-1 == savedValue)
+            XCTAssert(value.value == savedValue)
+        }
+    }
+
+    func test_SaveNonNilValueWithUpdating() {
+        let key = Keys.intValue
+
+        given("set default object with the key") {
+            userDefaults.set(2, forKey: key.description)
+        }
+
+        // when
+        let value = PersistentValue<Int>(key: key, userDefaults: userDefaults)
+        value.save {
+            $0 ?? -1
+        }
+
+        // then
+        then("there is saved int in user defaults") {
+            let savedValue = userDefaults.integer(forKey: key.description)
+            XCTAssertEqual(savedValue, 2)
+            XCTAssertEqual(savedValue, value.value)
+        }
+    }
     
     func test_SaveNilValue() {
         // given

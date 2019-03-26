@@ -62,6 +62,16 @@ open class PersistentValue<ValueType> {
         }
     }
 
+    /// Saves a value transformed by given updating closure into `UserDefaults`.
+    /// Removes a value from `UserDefaults` if `value` is `nil`
+    ///
+    /// - parameter updating: Updating closure that receives current value and
+    ///     save returned value as a new current.
+    open func save(updating: (ValueType?) -> ValueType?) {
+        value = updating(value)
+        save()
+    }
+
     /// Loads a value from `UserDefaults`.
     open func fetch() {
         value = load(userDefaults, key)

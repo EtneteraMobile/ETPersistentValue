@@ -52,11 +52,11 @@ class ETPersistentSetTests: XCTestCase {
 
         // w
         let persistentSet = PersistentSet<Int>(key: key, userDefaults: userDefaults)
-        persistentSet.fetch()
-        
+
         // t
-        XCTAssert(persistentSet.value?.count == 2)
-        XCTAssert(persistentSet.value?.first == 20)
+        XCTAssertEqual(persistentSet.value?.count, 2)
+        XCTAssert(persistentSet.value?.contains(20) == true)
+        XCTAssert(persistentSet.value?.contains(30) == true)
     }
     
     func test_SetValueLoadIncorrectData() {
