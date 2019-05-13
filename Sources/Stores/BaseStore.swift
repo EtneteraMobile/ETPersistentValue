@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Empty implementation of `PersistentValueType` that should be overriden by concrete Store.
 open class BaseStore<T>: PersistentValueType {
     public typealias ValueType = T
 

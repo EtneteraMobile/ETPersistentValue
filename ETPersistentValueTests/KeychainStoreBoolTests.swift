@@ -44,9 +44,24 @@ class KeychainStoreTests: XCTestCase {
         }
     }
 
+    func test_FetchValue() {
+        // given
+        PersistentBool(value: true, account: Account.boolValue).save()
+
+        // when
+        let value = PersistentBool(value: false, account: Account.boolValue)
+        value.fetch()
+
+        // then
+        XCTAssertNotNil(value.value)
+        if let v = value.value {
+            XCTAssertTrue(v)
+        }
+    }
+
     func test_ValueSave() {
         // given
-        let value = PersistentBool(value: false, account: Account.boolValue)
+        let value = PersistentBool(account: Account.boolValue)
 
         // when
         value.value = false

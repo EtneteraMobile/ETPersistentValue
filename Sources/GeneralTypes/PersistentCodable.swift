@@ -35,12 +35,7 @@ open class PersistentCodable<ValueType: Codable>: PersistentValue<ValueType> {
     /// - Parameter input: Value for saving. Can be an `Array` of `Codable` objects.
     /// - Returns: A processed `Codable` object for saving into `UserDefaults`.
     class func toUserDefaults(_ input: ValueType) -> Any {
-        do {
-            let encoder = JSONEncoder()
-            return try encoder.encode(input)
-        } catch {
-            preconditionFailure("Failed to encode data with error: \(error)")
-        }
+        return toData(input)
     }
 
     /// Decodes `JSON` into `Codable` object and returns it.
@@ -51,13 +46,54 @@ open class PersistentCodable<ValueType: Codable>: PersistentValue<ValueType> {
             return nil
         }
 
+        return fromData(data)
+    }
+
+    // MARK: - Keychain Initialization
+
+    /// Initialized `PersistentValue` and loads it from **Keychain**.
+    ///
+    /// - Parameters:
+    ///   - account: Account for value identification in Keychain.
+    ///   - service: Service for value identification in Keychain.
+    public init(account: CustomStringConvertible, service: CustomStringConvertible = KeychainDefaultService) {
+        let store = KeychainStore<ValueType>(account: account, service: service, convertFrom: type(of: self).fromData, convertTo: type(of: self).toData)
+        super.init(store)
+    }
+
+    /// Initialized `PersistentValue` with given value.
+    ///
+    /// - Parameters:
+    ///   - value: Initial value
+    ///   - account: Account for value identification in Keychain.
+    ///   - service: Service for value identification in Keychain.
+    ///
+    /// - Attention: Value isn't saved it into store right away. You need to call `save()` for that.
+    public init(value: ValueType?, account: CustomStringConvertible, service: CustomStringConvertible = KeychainDefaultService) {
+        let store = KeychainStore<ValueType>(value: value, account: account, service: service, convertFrom: type(of: self).fromData, convertTo: type(of: self).toData)
+        super.init(store)
+    }
+
+    class func toData(_ input: ValueType) -> Data {
+        do {
+            let encoder = JSONEncoder()
+            return try encoder.encode(input)
+        } catch {
+            preconditionFailure("Failed to encode data with error: \(error)")
+        }
+    }
+
+    class func fromData(_ input: Data?) -> ValueType? {
+        guard let data = input else {
+            return nil
+        }
+
         do {
             let decoder = JSONDecoder()
             let decoded = try decoder.decode(ValueType.self, from: data)
             return decoded
         } catch {
-            print(error)
-            return nil
+            preconditionFailure("Failed to decode data with error: \(error)")
         }
     }
 }

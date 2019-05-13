@@ -16,12 +16,14 @@
 		71460DD0228942C600AA5B13 /* PersistentSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC08A21F2F15F200A1387B /* PersistentSet.swift */; };
 		71460DD12289447700AA5B13 /* PersistentCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF05E42126B4E30050A6E9 /* PersistentCodable.swift */; };
 		71460DD322894C5700AA5B13 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71460DD222894C5700AA5B13 /* KeychainStore.swift */; };
-		7147BA9222895BE800861FEC /* KeychainStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7147BA9122895BE800861FEC /* KeychainStoreTests.swift */; };
+		7147BA9222895BE800861FEC /* KeychainStoreBoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7147BA9122895BE800861FEC /* KeychainStoreBoolTests.swift */; };
 		7147BA9A22895CD600861FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7147BA9922895CD600861FEC /* AppDelegate.swift */; };
 		7147BA9C22895CD600861FEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7147BA9B22895CD600861FEC /* ViewController.swift */; };
 		7147BA9F22895CD600861FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7147BA9D22895CD600861FEC /* Main.storyboard */; };
 		7147BAA122895CD700861FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7147BAA022895CD700861FEC /* Assets.xcassets */; };
 		7147BAA422895CD700861FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7147BAA222895CD700861FEC /* LaunchScreen.storyboard */; };
+		7147BAAA2289A9A300861FEC /* KeychainStoreCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7147BAA92289A9A300861FEC /* KeychainStoreCodableTests.swift */; };
+		7147BAAC2289AAFD00861FEC /* KeychainStoreStringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7147BAAB2289AAFD00861FEC /* KeychainStoreStringTests.swift */; };
 		714A15DC22893EDA0002CD0D /* BaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15DB22893EDA0002CD0D /* BaseStore.swift */; };
 		714A15DF22893EFB0002CD0D /* PersistentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15DE22893EFB0002CD0D /* PersistentValue.swift */; };
 		714A15E122893F770002CD0D /* PersistentValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15E022893F770002CD0D /* PersistentValueType.swift */; };
@@ -47,7 +49,7 @@
 
 /* Begin PBXFileReference section */
 		71460DD222894C5700AA5B13 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
-		7147BA9122895BE800861FEC /* KeychainStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreTests.swift; sourceTree = "<group>"; };
+		7147BA9122895BE800861FEC /* KeychainStoreBoolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreBoolTests.swift; sourceTree = "<group>"; };
 		7147BA9722895CD600861FEC /* TestsHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestsHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7147BA9922895CD600861FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7147BA9B22895CD600861FEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 		7147BAA022895CD700861FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7147BAA322895CD700861FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7147BAA522895CD700861FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7147BAA92289A9A300861FEC /* KeychainStoreCodableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreCodableTests.swift; sourceTree = "<group>"; };
+		7147BAAB2289AAFD00861FEC /* KeychainStoreStringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreStringTests.swift; sourceTree = "<group>"; };
 		714A15DB22893EDA0002CD0D /* BaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStore.swift; sourceTree = "<group>"; };
 		714A15DE22893EFB0002CD0D /* PersistentValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentValue.swift; sourceTree = "<group>"; };
 		714A15E022893F770002CD0D /* PersistentValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentValueType.swift; sourceTree = "<group>"; };
@@ -192,7 +196,9 @@
 				E4AF05E62126BBC90050A6E9 /* UserDefaultsStoreCodableTests.swift */,
 				E4AF05F12126F8B10050A6E9 /* UserDefaultsStoreSetTests.swift */,
 				E4AF05EA2126C4C90050A6E9 /* UserDefaultsStoreTests.swift */,
-				7147BA9122895BE800861FEC /* KeychainStoreTests.swift */,
+				7147BA9122895BE800861FEC /* KeychainStoreBoolTests.swift */,
+				7147BAA92289A9A300861FEC /* KeychainStoreCodableTests.swift */,
+				7147BAAB2289AAFD00861FEC /* KeychainStoreStringTests.swift */,
 				E4AF05F32126FBA40050A6E9 /* Hedgehog.swift */,
 				E4AF05EF2126F7E70050A6E9 /* TestsHelper.swift */,
 				E4EC91462125C4F600BFFBCB /* Info.plist */,
@@ -373,11 +379,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7147BAAC2289AAFD00861FEC /* KeychainStoreStringTests.swift in Sources */,
 				E4AF05E72126BBC90050A6E9 /* UserDefaultsStoreCodableTests.swift in Sources */,
 				E4AF05F02126F7E70050A6E9 /* TestsHelper.swift in Sources */,
 				E4AF05F42126FBA40050A6E9 /* Hedgehog.swift in Sources */,
+				7147BAAA2289A9A300861FEC /* KeychainStoreCodableTests.swift in Sources */,
 				E4AF05F22126F8B10050A6E9 /* UserDefaultsStoreSetTests.swift in Sources */,
-				7147BA9222895BE800861FEC /* KeychainStoreTests.swift in Sources */,
+				7147BA9222895BE800861FEC /* KeychainStoreBoolTests.swift in Sources */,
 				E4AF05EB2126C4C90050A6E9 /* UserDefaultsStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

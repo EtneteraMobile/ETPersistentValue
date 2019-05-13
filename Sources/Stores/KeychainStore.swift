@@ -7,23 +7,14 @@
 
 import Foundation
 
+// see https://stackoverflow.com/a/37539998/1694526
+
 public let KeychainDefaultService: CustomStringConvertible = "cz.etnetera.ETPersistentValue-iOS"
 
-// see https://stackoverflow.com/a/37539998/1694526
-// Arguments for the keychain queries
-private let kSecClassValue = NSString(format: kSecClass)
-private let kSecAttrAccountValue = NSString(format: kSecAttrAccount)
-private let kSecValueDataValue = NSString(format: kSecValueData)
-private let kSecClassGenericPasswordValue = NSString(format: kSecClassGenericPassword)
-private let kSecAttrServiceValue = NSString(format: kSecAttrService)
-private let kSecMatchLimitValue = NSString(format: kSecMatchLimit)
-private let kSecReturnDataValue = NSString(format: kSecReturnData)
-private let kSecMatchLimitOneValue = NSString(format: kSecMatchLimitOne)
-
+/// `KeychainStore` offers saving and loading capabilities from Keychain.
 open class KeychainStore<ValueType>: BaseStore<ValueType> {
+
     // MARK: - Variables
-
-
     // MARK: private
 
     private let account: String
@@ -33,6 +24,13 @@ open class KeychainStore<ValueType>: BaseStore<ValueType> {
 
     // MARK: - Initialization
 
+    /// Initializes `KeychainStore` and loads the value from the `Keychain`.
+    ///
+    /// - Parameters:
+    ///   - account: Identificator of the value.
+    ///   - service: Identificator of the value.
+    ///   - convertFrom: Closure that converts `Data` from Keychain to `ValueType`.
+    ///   - convertTo: Closure that converts `ValueType` into `Data` for Keychain.
     public init(account: CustomStringConvertible, service: CustomStringConvertible, convertFrom: @escaping (_ input: Data?) -> ValueType?, convertTo: @escaping (_ input: ValueType) -> Data) {
         self.account = account.description
         self.service = service.description
@@ -41,6 +39,15 @@ open class KeychainStore<ValueType>: BaseStore<ValueType> {
         super.init(KeychainStore.fetch(service.description, account.description, convertFrom: convertFrom))
     }
 
+    /// Initializes `KeychainStore` with given value.
+    ///
+    /// - Attention: Value isn't saved it into `KeychainStore` right away. You need to call `save()` for that.
+    ///
+    /// - Parameters:
+    ///   - account: Identificator of the value.
+    ///   - service: Identificator of the value.
+    ///   - convertFrom: Closure that converts `Data` from Keychain to `ValueType`.
+    ///   - convertTo: Closure that converts `ValueType` into `Data` for Keychain.
     public init(value: ValueType?, account: CustomStringConvertible, service: CustomStringConvertible, convertFrom: @escaping (_ input: Data?) -> ValueType?, convertTo: @escaping (_ input: ValueType) -> Data) {
         self.account = account.description
         self.service = service.description
@@ -52,8 +59,8 @@ open class KeychainStore<ValueType>: BaseStore<ValueType> {
     // MARK: - Actions
     // MARK: public
 
-    /// Saves a value into `UserDefaults`.
-    /// Removes a value from `UserDefaults` if `value` is `nil`
+    /// Saves a value into `Keychain`.
+    /// Removes a value from `Keychain` if `value` is `nil`
     override open func save() {
         if let value = value {
             let data = convertTo(value)
@@ -82,8 +89,8 @@ open class KeychainStore<ValueType>: BaseStore<ValueType> {
         }
     }
 
-    /// Saves a value transformed by given updating closure into `UserDefaults`.
-    /// Removes a value from `UserDefaults` if `value` is `nil`
+    /// Saves a value transformed by given updating closure into `Keychain`.
+    /// Removes a value from `Keychain` if `value` is `nil`
     ///
     /// - parameter updating: Updating closure that receives current value and
     ///     save returned value as a new current.
@@ -92,12 +99,12 @@ open class KeychainStore<ValueType>: BaseStore<ValueType> {
         save()
     }
 
-    /// Loads a value from `UserDefaults`.
+    /// Loads a value from `Keychain`.
     override open func fetch() {
         value = KeychainStore.fetch(service, account, convertFrom: convertFrom)
     }
 
-    /// Removes a value from `UserDefaults`.
+    /// Removes a value from `Keychain`.
     override open func remove() {
         value = nil
         let keychainQuery: [NSString: Any] = [
@@ -151,3 +158,13 @@ open class KeychainStore<ValueType>: BaseStore<ValueType> {
         }
     }
 }
+
+// Arguments for the keychain queries
+private let kSecClassValue = NSString(format: kSecClass)
+private let kSecAttrAccountValue = NSString(format: kSecAttrAccount)
+private let kSecValueDataValue = NSString(format: kSecValueData)
+private let kSecClassGenericPasswordValue = NSString(format: kSecClassGenericPassword)
+private let kSecAttrServiceValue = NSString(format: kSecAttrService)
+private let kSecMatchLimitValue = NSString(format: kSecMatchLimit)
+private let kSecReturnDataValue = NSString(format: kSecReturnData)
+private let kSecMatchLimitOneValue = NSString(format: kSecMatchLimitOne)

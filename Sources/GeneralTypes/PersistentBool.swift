@@ -20,7 +20,7 @@ open class PersistentBool: PersistentValue<Bool> {
         super.init(UserDefaultsStore<ValueType>(key: key, userDefaults: userDefaults))
     }
 
-    /// Initializes `PersistentValue` but doesn't save it into **UserDefaults** right away. You need to call `save()` for that.
+    /// Initializes `PersistentValue` with given value.
     ///
     /// - Parameters:
     ///   - key: Identificator of the value.
@@ -37,28 +37,32 @@ open class PersistentBool: PersistentValue<Bool> {
     /// Initialized `PersistentValue` and loads it from **Keychain**.
     ///
     /// - Parameters:
+    ///   - account: Account for value identification in Keychain.
+    ///   - service: Service for value identification in Keychain.
+    public init(account: CustomStringConvertible, service: CustomStringConvertible = KeychainDefaultService) {
+        let store = KeychainStore<Bool>(account: account, service: service, convertFrom: type(of: self).fromData, convertTo: type(of: self).toData)
+        super.init(store)
+    }
+
+    /// Initialized `PersistentValue` with given value.
+    ///
+    /// - Parameters:
     ///   - value: Initial value
     ///   - account: Account for value identification in Keychain.
     ///   - service: Service for value identification in Keychain.
     ///
     /// - Attention: Value isn't saved it into store right away. You need to call `save()` for that.
-    public init(account: CustomStringConvertible, service: CustomStringConvertible = KeychainDefaultService) {
-        let store = KeychainStore<Bool>(account: account, service: service, convertFrom: {
-            return $0?[0] == 1
-        }, convertTo: {
-            var value = $0
-            return Data(bytes: &value, count: MemoryLayout.size(ofValue: value))
-        })
+    public init(value: ValueType?, account: CustomStringConvertible, service: CustomStringConvertible = KeychainDefaultService) {
+        let store = KeychainStore<Bool>(value: value, account: account, service: service, convertFrom: type(of: self).fromData, convertTo: type(of: self).toData)
         super.init(store)
     }
 
-    public init(value: ValueType?, account: CustomStringConvertible, service: CustomStringConvertible = KeychainDefaultService) {
-        let store = KeychainStore<Bool>(value: value, account: account, service: service, convertFrom: {
-            return $0?[0] == 1
-        }, convertTo: {
-            var value = $0
-            return Data(bytes: &value, count: MemoryLayout.size(ofValue: value))
-        })
-        super.init(store)
+    class func toData(_ input: ValueType) -> Data {
+        var value = input
+        return Data(bytes: &value, count: MemoryLayout.size(ofValue: value))
+    }
+
+    class func fromData(_ input: Data?) -> ValueType? {
+        return input?[0] == 1
     }
 }
