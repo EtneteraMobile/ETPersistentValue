@@ -11,7 +11,7 @@ import Foundation
 /// `PersistentValue` offers saving and loading capabilities of primitive types
 /// which can be used by subclasses like `PersistentFloat`, `PersistentBool` etc.
 /// Also supports a `PersistentCodable` which expects a type that conforms to `Codable` protocol.
-open class PersistentValue<ValueType> {
+open class PersistentSecureValue<ValueType> {
 
     // MARK: - Variables
     // MARK: public
