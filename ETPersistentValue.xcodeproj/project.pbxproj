@@ -15,10 +15,10 @@
 		71460DCF2289412D00AA5B13 /* PersistentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716BF70A1F5B161B00130268 /* PersistentDate.swift */; };
 		71460DD0228942C600AA5B13 /* PersistentSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC08A21F2F15F200A1387B /* PersistentSet.swift */; };
 		71460DD12289447700AA5B13 /* PersistentCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF05E42126B4E30050A6E9 /* PersistentCodable.swift */; };
-		714A15DC22893EDA0002CD0D /* PersistentValueStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15DB22893EDA0002CD0D /* PersistentValueStore.swift */; };
-		714A15DF22893EFB0002CD0D /* BoxedPersistentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15DE22893EFB0002CD0D /* BoxedPersistentValue.swift */; };
+		714A15DC22893EDA0002CD0D /* BaseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15DB22893EDA0002CD0D /* BaseStore.swift */; };
+		714A15DF22893EFB0002CD0D /* PersistentValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15DE22893EFB0002CD0D /* PersistentValue.swift */; };
 		714A15E122893F770002CD0D /* PersistentValueType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15E022893F770002CD0D /* PersistentValueType.swift */; };
-		7154C9942285B0AB0071A2A0 /* PersistentUserDefaultsValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C9932285B0AB0071A2A0 /* PersistentUserDefaultsValue.swift */; };
+		7154C9942285B0AB0071A2A0 /* UserDefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C9932285B0AB0071A2A0 /* UserDefaultsStore.swift */; };
 		7154C9962285B0AD0071A2A0 /* PersistentSecureValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C9952285B0AD0071A2A0 /* PersistentSecureValue.swift */; };
 		7154C9972285BC490071A2A0 /* PersistentSecure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7154C9912285AFD00071A2A0 /* PersistentSecure.swift */; };
 		71DC089B1F2F133600A1387B /* PersistentBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DC089A1F2F133600A1387B /* PersistentBool.swift */; };
@@ -41,11 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		714A15DB22893EDA0002CD0D /* PersistentValueStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentValueStore.swift; sourceTree = "<group>"; };
-		714A15DE22893EFB0002CD0D /* BoxedPersistentValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedPersistentValue.swift; sourceTree = "<group>"; };
+		714A15DB22893EDA0002CD0D /* BaseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseStore.swift; sourceTree = "<group>"; };
+		714A15DE22893EFB0002CD0D /* PersistentValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentValue.swift; sourceTree = "<group>"; };
 		714A15E022893F770002CD0D /* PersistentValueType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentValueType.swift; sourceTree = "<group>"; };
 		7154C9912285AFD00071A2A0 /* PersistentSecure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentSecure.swift; sourceTree = "<group>"; };
-		7154C9932285B0AB0071A2A0 /* PersistentUserDefaultsValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentUserDefaultsValue.swift; sourceTree = "<group>"; };
+		7154C9932285B0AB0071A2A0 /* UserDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStore.swift; sourceTree = "<group>"; };
 		7154C9952285B0AD0071A2A0 /* PersistentSecureValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentSecureValue.swift; sourceTree = "<group>"; };
 		716BF70A1F5B161B00130268 /* PersistentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDate.swift; sourceTree = "<group>"; };
 		71DC08891F2F128400A1387B /* ETPersistentValue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETPersistentValue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,8 +90,8 @@
 		714A15DD22893EE80002CD0D /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				714A15DB22893EDA0002CD0D /* PersistentValueStore.swift */,
-				7154C9932285B0AB0071A2A0 /* PersistentUserDefaultsValue.swift */,
+				714A15DB22893EDA0002CD0D /* BaseStore.swift */,
+				7154C9932285B0AB0071A2A0 /* UserDefaultsStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -110,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				714A15E022893F770002CD0D /* PersistentValueType.swift */,
-				714A15DE22893EFB0002CD0D /* BoxedPersistentValue.swift */,
+				714A15DE22893EFB0002CD0D /* PersistentValue.swift */,
 				714A15DD22893EE80002CD0D /* Stores */,
 				7154C9952285B0AD0071A2A0 /* PersistentSecureValue.swift */,
 				7154C9912285AFD00071A2A0 /* PersistentSecure.swift */,
@@ -277,16 +277,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				714A15DC22893EDA0002CD0D /* PersistentValueStore.swift in Sources */,
+				714A15DC22893EDA0002CD0D /* BaseStore.swift in Sources */,
 				71460DCD2289412000AA5B13 /* PersistentString.swift in Sources */,
 				71460DCF2289412D00AA5B13 /* PersistentDate.swift in Sources */,
 				71DC089B1F2F133600A1387B /* PersistentBool.swift in Sources */,
 				71460DCC2289411300AA5B13 /* PersistentInt.swift in Sources */,
-				7154C9942285B0AB0071A2A0 /* PersistentUserDefaultsValue.swift in Sources */,
+				7154C9942285B0AB0071A2A0 /* UserDefaultsStore.swift in Sources */,
 				7154C9962285B0AD0071A2A0 /* PersistentSecureValue.swift in Sources */,
 				71460DD12289447700AA5B13 /* PersistentCodable.swift in Sources */,
 				71460DD0228942C600AA5B13 /* PersistentSet.swift in Sources */,
-				714A15DF22893EFB0002CD0D /* BoxedPersistentValue.swift in Sources */,
+				714A15DF22893EFB0002CD0D /* PersistentValue.swift in Sources */,
 				71460DCA228940EB00AA5B13 /* PersistentDouble.swift in Sources */,
 				71460DCB2289410A00AA5B13 /* PersistentFloat.swift in Sources */,
 				714A15E122893F770002CD0D /* PersistentValueType.swift in Sources */,

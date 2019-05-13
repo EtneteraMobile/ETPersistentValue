@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class PersistentFloat: BoxedPersistentValue<Float> {
+open class PersistentFloat: PersistentValue<Float> {
     // MARK: - UserDefaults Initialization
 
     /// Initializes `PersistentValue` and loads it from the `UserDefaults` by the defined key.
@@ -17,7 +17,7 @@ open class PersistentFloat: BoxedPersistentValue<Float> {
     ///   - key: Identificator of the value.
     ///   - userDefaults: Instance of UserDefaults.
     public init(key: CustomStringConvertible, userDefaults: UserDefaults = UserDefaults.standard) {
-        super.init(PersistentUserDefaultsValue<ValueType>(key: key, userDefaults: userDefaults))
+        super.init(UserDefaultsStore<ValueType>(key: key, userDefaults: userDefaults))
     }
 
     /// Initializes `PersistentValue` but doesn't save it into `UserDefaults` right away. You need to call `save()` for that.
@@ -27,6 +27,6 @@ open class PersistentFloat: BoxedPersistentValue<Float> {
     ///   - value: Value which should be saved.
     ///   - userDefaults: Instance of UserDefaults.
     public init(key: CustomStringConvertible, value: ValueType, userDefaults: UserDefaults = UserDefaults.standard) {
-        super.init(PersistentUserDefaultsValue<ValueType>(key: key, value: value, userDefaults: userDefaults))
+        super.init(UserDefaultsStore<ValueType>(key: key, value: value, userDefaults: userDefaults))
     }
 }

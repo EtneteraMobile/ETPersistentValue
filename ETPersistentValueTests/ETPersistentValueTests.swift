@@ -45,7 +45,7 @@ class ETPersistentValueTests: XCTestCase {
         let key = Keys.boolValue
         userDefaults.set(true, forKey: key.description)
         
-        let value = PersistentUserDefaultsValue<Bool>(key: key, userDefaults: userDefaults)
+        let value = UserDefaultsStore<Bool>(key: key, userDefaults: userDefaults)
 
         // then
         XCTAssertNotNil(value.value)
@@ -60,7 +60,7 @@ class ETPersistentValueTests: XCTestCase {
         }
         
         // when
-        let value = PersistentUserDefaultsValue(key: key, value: 20, userDefaults: userDefaults)
+        let value = UserDefaultsStore(key: key, value: 20, userDefaults: userDefaults)
         value.save()
         
         // then
@@ -78,7 +78,7 @@ class ETPersistentValueTests: XCTestCase {
         }
 
         // when
-        let value = PersistentUserDefaultsValue<Int>(key: key, userDefaults: userDefaults)
+        let value = UserDefaultsStore<Int>(key: key, userDefaults: userDefaults)
         value.save {
             $0 ?? -1
         }
@@ -99,7 +99,7 @@ class ETPersistentValueTests: XCTestCase {
         }
 
         // when
-        let value = PersistentUserDefaultsValue<Int>(key: key, userDefaults: userDefaults)
+        let value = UserDefaultsStore<Int>(key: key, userDefaults: userDefaults)
         value.save {
             $0 ?? -1
         }
@@ -130,7 +130,7 @@ class ETPersistentValueTests: XCTestCase {
         let key = Keys.intValue
         
         // when
-        let value = PersistentUserDefaultsValue(key: key, value: 20, userDefaults: userDefaults)
+        let value = UserDefaultsStore(key: key, value: 20, userDefaults: userDefaults)
         value.save()
         value.remove()
         

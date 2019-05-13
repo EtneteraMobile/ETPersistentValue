@@ -7,7 +7,7 @@
 
 import Foundation
 
-open class PersistentDate: BoxedPersistentValue<Date> {
+open class PersistentDate: PersistentValue<Date> {
     // MARK: - UserDefaults Initialization
 
     /// Initializes `PersistentValue` and loads it from the `UserDefaults` by the defined key.
@@ -16,7 +16,7 @@ open class PersistentDate: BoxedPersistentValue<Date> {
     ///   - key: Identificator of the value.
     ///   - userDefaults: Instance of UserDefaults.
     public init(key: CustomStringConvertible, userDefaults: UserDefaults = UserDefaults.standard) {
-        super.init(PersistentUserDefaultsValue<ValueType>(key: key, userDefaults: userDefaults))
+        super.init(UserDefaultsStore<ValueType>(key: key, userDefaults: userDefaults))
     }
 
     /// Initializes `PersistentValue` but doesn't save it into `UserDefaults` right away. You need to call `save()` for that.
@@ -26,6 +26,6 @@ open class PersistentDate: BoxedPersistentValue<Date> {
     ///   - value: Value which should be saved.
     ///   - userDefaults: Instance of UserDefaults.
     public init(key: CustomStringConvertible, value: ValueType, userDefaults: UserDefaults = UserDefaults.standard) {
-        super.init(PersistentUserDefaultsValue<ValueType>(key: key, value: value, userDefaults: userDefaults))
+        super.init(UserDefaultsStore<ValueType>(key: key, value: value, userDefaults: userDefaults))
     }
 }
