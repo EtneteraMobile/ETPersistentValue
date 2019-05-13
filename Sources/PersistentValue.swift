@@ -26,8 +26,8 @@ open class PersistentValue<T>: PersistentValueType {
 
     // MARK: - Initialization
 
-    internal init(_ box: BaseStore<ValueType>) {
-        self.valueStore = box
+    internal init(_ store: BaseStore<ValueType>) {
+        self.valueStore = store
     }
 
     // MARK: - Actions

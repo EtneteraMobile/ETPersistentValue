@@ -8,7 +8,7 @@
 import XCTest
 @testable import ETPersistentValue
 
-class ETPersistentValueTests: XCTestCase {
+class UserDefaultsStoreTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

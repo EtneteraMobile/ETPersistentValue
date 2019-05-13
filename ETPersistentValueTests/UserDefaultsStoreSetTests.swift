@@ -8,7 +8,7 @@
 import XCTest
 import ETPersistentValue
 
-class ETPersistentSetTests: XCTestCase {
+class UserDefaultsStoreSetTests: XCTestCase {
     
     var userDefaults = UserDefaults(suiteName: "testSuite")!
     let key = "testSet"

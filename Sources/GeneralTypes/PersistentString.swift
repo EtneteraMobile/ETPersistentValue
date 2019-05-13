@@ -26,6 +26,8 @@ open class PersistentString: PersistentValue<String> {
     ///   - key: Identificator of the value.
     ///   - value: Value which should be saved.
     ///   - userDefaults: Instance of UserDefaults.
+    ///
+    /// - Attention: Value isn't saved it into store right away. You need to call `save()` for that.
     public init(key: CustomStringConvertible, value: ValueType, userDefaults: UserDefaults = UserDefaults.standard) {
         super.init(UserDefaultsStore<ValueType>(key: key, value: value, userDefaults: userDefaults))
     }

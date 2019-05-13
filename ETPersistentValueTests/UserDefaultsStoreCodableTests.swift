@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import ETPersistentValue
 
-class ETPersistentCodableTests: XCTestCase {
+class UserDefaultsStoreCodableTests: XCTestCase {
     
     var userDefaults = UserDefaults(suiteName: "testSuite")!
     let key = "codableHedgehog"
