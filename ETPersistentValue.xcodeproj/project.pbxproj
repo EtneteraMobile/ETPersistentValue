@@ -156,9 +156,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		71DC08881F2F128400A1387B /* ETPersistentValue iOS */ = {
+		71DC08881F2F128400A1387B /* ETPersistentValue */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 71DC088F1F2F128400A1387B /* Build configuration list for PBXNativeTarget "ETPersistentValue iOS" */;
+			buildConfigurationList = 71DC088F1F2F128400A1387B /* Build configuration list for PBXNativeTarget "ETPersistentValue" */;
 			buildPhases = (
 				71DC08841F2F128400A1387B /* Sources */,
 				71DC08851F2F128400A1387B /* Frameworks */,
@@ -169,7 +169,7 @@
 			);
 			dependencies = (
 			);
-			name = "ETPersistentValue iOS";
+			name = ETPersistentValue;
 			productName = "ETPersistentValue iOS";
 			productReference = 71DC08891F2F128400A1387B /* ETPersistentValue.framework */;
 			productType = "com.apple.product-type.framework";
@@ -226,7 +226,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				71DC08881F2F128400A1387B /* ETPersistentValue iOS */,
+				71DC08881F2F128400A1387B /* ETPersistentValue */,
 				E4EC91412125C4F600BFFBCB /* ETPersistentValueTests */,
 			);
 		};
@@ -284,7 +284,7 @@
 /* Begin PBXTargetDependency section */
 		E4EC91492125C4F600BFFBCB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 71DC08881F2F128400A1387B /* ETPersistentValue iOS */;
+			target = 71DC08881F2F128400A1387B /* ETPersistentValue */;
 			targetProxy = E4EC91482125C4F600BFFBCB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -578,7 +578,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		71DC088F1F2F128400A1387B /* Build configuration list for PBXNativeTarget "ETPersistentValue iOS" */ = {
+		71DC088F1F2F128400A1387B /* Build configuration list for PBXNativeTarget "ETPersistentValue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				71DC08901F2F128400A1387B /* Debug */,
