@@ -1,111 +1,59 @@
 //
-//  PersistentValue.swift
-//  ETPersistentValue
+//  BoxedPersistentValue.swift
+//  ETPersistentValue iOS
 //
-//  Created by Jan Čislinský on 31/07/2017.
-//
+//  Created by Jan Čislinský on 13. 05. 2019.
 //
 
 import Foundation
 
-/// `PersistentValue` offers saving and loading capabilities of primitive types
-/// which can be used by subclasses like `PersistentFloat`, `PersistentBool` etc.
-/// Also supports a `PersistentCodable` which expects a type that conforms to `Codable` protocol.
-open class PersistentValue<ValueType> {
+/// Persists value in one of the supported stores. In which store is value
+/// persisted is selected in `init.
+///
+/// `PersistentValue` bridges `self.value` with `BaseStore`.
+///
+/// All requirements from `PersistentValueType` are bridged to internal
+/// `BaseStore` (like UserDefaultsStore, KeychainStore).
+open class PersistentValue<T>: PersistentValueType {
+    public typealias ValueType = T
 
-    // MARK: - Variables
-    // MARK: public
-
-    open var value: ValueType?
-    public let key: String
-
-    // MARK: private
-
-    private let userDefaults: UserDefaults
+    /// Persistet value
+    public var value: ValueType? {
+        get {
+            return valueStore.value
+        }
+        set {
+            valueStore.value = newValue
+        }
+    }
+    internal let valueStore: BaseStore<ValueType>
 
     // MARK: - Initialization
-    
-    /// Initializes `PersistentValue` and loads it from the `UserDefaults` by the defined key.
-    ///
-    /// - Parameters:
-    ///   - key: Identificator of the value.
-    ///   - userDefaults: Instance of UserDefaults.
-    public init(key: CustomStringConvertible, userDefaults: UserDefaults = UserDefaults.standard) {
-        self.key = key.description
-        self.userDefaults = userDefaults
-        self.value = load(self.userDefaults, self.key)
-    }
-    
-    /// Initializes `PersistentValue` but doesn't save it into `UserDefaults` right away. You need to call `save()` for that.
-    ///
-    /// - Parameters:
-    ///   - key: Identificator of the value.
-    ///   - value: Value which should be saved.
-    ///   - userDefaults: Instance of UserDefaults.
-    public init(key: CustomStringConvertible, value: ValueType, userDefaults: UserDefaults = UserDefaults.standard) {
-        self.key = key.description
-        self.userDefaults = userDefaults
-        self.value = value
+
+    internal init(_ store: BaseStore<ValueType>) {
+        self.valueStore = store
     }
 
     // MARK: - Actions
     // MARK: public
 
-    /// Saves a value into `UserDefaults`.
-    /// Removes a value from `UserDefaults` if `value` is `nil`
-    open func save() {
-        if let value = value {
-            userDefaults.set(toUserDefaults(value), forKey: key)
-            userDefaults.synchronize()
-        } else {
-            remove()
-        }
+    /// Saves current value synchronously into store.
+    public func save() {
+        valueStore.save()
     }
 
-    /// Saves a value transformed by given updating closure into `UserDefaults`.
-    /// Removes a value from `UserDefaults` if `value` is `nil`
-    ///
-    /// - parameter updating: Updating closure that receives current value and
-    ///     save returned value as a new current.
-    open func save(updating: (ValueType?) -> ValueType?) {
-        value = updating(value)
-        save()
+    /// Saves updated value by given closure synchronously into store.
+    public func save(updating: (ValueType?) -> ValueType?) {
+        valueStore.save(updating: updating)
     }
 
-    /// Loads a value from `UserDefaults`.
-    open func fetch() {
-        value = load(userDefaults, key)
+    /// Fetches value from store.
+    public func fetch() {
+        valueStore.fetch()
     }
 
-    /// Removes a value from `UserDefaults`.
-    open func remove() {
-        value = nil
-        userDefaults.removeObject(forKey: key)
-        userDefaults.synchronize()
-    }
-
-    // MARK: internal
-
-    /// - Parameter input: Value for saving.
-    /// - Returns: A processed value for saving into `UserDefaults`.
-    open func toUserDefaults(_ input: ValueType) -> Any {
-        return input
-    }
-
-    /// - Parameter input: Value to be loaded.
-    /// - Returns: A loaded value from `UserDefaults`.
-    open func fromUserDefaults(_ input: Any?) -> ValueType? {
-        return input as? ValueType
-    }
-
-    // MARK: private
-
-    /// Loads value from `UserDefaults`
-    ///
-    /// - Parameters:
-    ///   - key: Identificator of the value saved in `UserDefaults`.
-    ///   - userDefaults: Instance of `UserDefaults`.
-    private func load(_ userDefaults: UserDefaults, _ key: String) -> ValueType? {
-        return fromUserDefaults(userDefaults.object(forKey: key) as AnyObject)
+    /// Removes value from store.
+    public func remove() {
+        valueStore.remove()
     }
 }
