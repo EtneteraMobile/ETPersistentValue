@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import ETPersistentValue
 
-class ETPersistentCodableTests: XCTestCase {
+class UserDefaultsStoreCodableTests: XCTestCase {
     
     var userDefaults = UserDefaults(suiteName: "testSuite")!
     let key = "codableHedgehog"
@@ -44,19 +44,6 @@ class ETPersistentCodableTests: XCTestCase {
         // given
         let json = "{'test': 'Test Json'}"
         userDefaults.set(json, forKey: key)
-        
-        // when
-        let loadedCodable = PersistentCodable<Hedgehog>(key: key, userDefaults: userDefaults)
-        
-        // then
-        XCTAssertNil(loadedCodable.value)
-    }
-    
-    func test_LoadCorruptedData_EncoderFailsAndReturnsNil() {
-        // given
-        let json = "{'test': 'Test,}"
-        let data = json.data(using: .ascii)
-        userDefaults.set(data, forKey: key)
         
         // when
         let loadedCodable = PersistentCodable<Hedgehog>(key: key, userDefaults: userDefaults)
