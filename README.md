@@ -1,11 +1,5 @@
 # PersistentValue for iOS
 
-[![Version](https://img.shields.io/cocoapods/v/ETPersistentValue?style=flat)](http://cocoapods.org/pods/ETPersistentValue)
-
-[![License](https://img.shields.io/cocoapods/l/ETPersistentValue.svg?style=flat)](http://cocoapods.org/pods/ETPersistentValue)
-
-![Platform](https://img.shields.io/cocoapods/p/ETPersistentValue?style=flat)
-
 `PersistentValue` brings classes that can help you with value persistence. You can persist value in **UserDefaults** or **Keychain** with exactly the same simple interface. In which store is value stored is selected in initialization (every store has own `init`).
 
 ## Usage
