@@ -43,11 +43,12 @@
 			containerPortal = 71DC087D1F2F123500A1387B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 71DC08881F2F128400A1387B;
-			remoteInfo = "ETPersistentValue";
+			remoteInfo = ETPersistentValue;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D10FE682BD8ED8A0094C215 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		71460DD222894C5700AA5B13 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
 		7147BA9122895BE800861FEC /* KeychainStoreBoolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStoreBoolTests.swift; sourceTree = "<group>"; };
 		7147BA9722895CD600861FEC /* TestsHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestsHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +66,7 @@
 		7154C9932285B0AB0071A2A0 /* UserDefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStore.swift; sourceTree = "<group>"; };
 		716BF70A1F5B161B00130268 /* PersistentDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDate.swift; sourceTree = "<group>"; };
 		71DC08891F2F128400A1387B /* ETPersistentValue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ETPersistentValue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		71DC08931F2F12C900A1387B /* ETPersistentValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ETPersistentValue.h"; sourceTree = "<group>"; };
+		71DC08931F2F12C900A1387B /* ETPersistentValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETPersistentValue.h; sourceTree = "<group>"; };
 		71DC08941F2F12C900A1387B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71DC089A1F2F133600A1387B /* PersistentBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentBool.swift; sourceTree = "<group>"; };
 		71DC089C1F2F140E00A1387B /* PersistentDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentDouble.swift; sourceTree = "<group>"; };
@@ -170,6 +171,7 @@
 			children = (
 				71DC08931F2F12C900A1387B /* ETPersistentValue.h */,
 				71DC08941F2F12C900A1387B /* Info.plist */,
+				1D10FE682BD8ED8A0094C215 /* PrivacyInfo.xcprivacy */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -250,7 +252,7 @@
 			dependencies = (
 			);
 			name = ETPersistentValue;
-			productName = "ETPersistentValue";
+			productName = ETPersistentValue;
 			productReference = 71DC08891F2F128400A1387B /* ETPersistentValue.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -613,7 +615,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -667,7 +669,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "cz.etnetera.ETPersistentValue-iOS";
