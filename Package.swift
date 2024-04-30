@@ -11,7 +11,13 @@ let package = Package(
         .library(
             name: "ETPersistentValue",
             type: .dynamic,
-            targets: ["ETPersistentValue"])
+            targets: ["ETPersistentValue"]
+        ),
+        .library(
+            name: "ETPersistentValue-Static",
+            type: .static,
+            targets: ["ETPersistentValue"]
+        )
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
